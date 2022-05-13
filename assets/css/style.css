@@ -21,6 +21,10 @@ textarea {
   border-bottom: 10px solid black;
 }
 
+.date {
+  font-size: 25px;
+}
+
 .description {
   white-space: pre-wrap;
   background-color: lightgrey;
