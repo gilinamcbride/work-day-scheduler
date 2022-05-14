@@ -1,20 +1,11 @@
-//variables on page needed
-var saveButton = $("#saveButton");
-var header = $(".jumbotron");
-var today = moment().format("MMMM DD, YYYY");
-var time = moment().format("hh:mm A");
-
 var showDate = function () {
-  var date = $("<p>").addClass("date").text(today);
-  header.append(date);
+  var today = moment().format("MMMM DD, YYYY");
+  $(".jumbotron").append($("<p>").addClass("date").text(today));
 };
 showDate();
 
-//TODO: change colors with time:
 function colorTime() {
-  var currentDate = new Date();
-
-  switch (currentDate.getHours()) {
+  switch (parseInt(moment().format("H"))) {
     case 9:
       $("#hour9").addClass("present");
       $("#hour10").addClass("future");
@@ -30,36 +21,64 @@ function colorTime() {
       $("#hour9").removeClass("present");
       $("#hour10").removeClass("future");
       $("#hour10").addClass("present");
+      $("#hour11").addClass("future");
+      $("#hour12").addClass("future");
+      $("#hour1").addClass("future");
+      $("#hour2").addClass("future");
+      $("#hour3").addClass("future");
+      $("#hour4").addClass("future");
+      $("#hour5").addClass("future");
       break;
     case 11:
       $("#hour10").removeClass("present");
       $("#hour11").removeClass("future");
       $("#hour11").addClass("present");
+      $("#hour12").addClass("future");
+      $("#hour1").addClass("future");
+      $("#hour2").addClass("future");
+      $("#hour3").addClass("future");
+      $("#hour4").addClass("future");
+      $("#hour5").addClass("future");
       break;
     case 12:
       $("#hour11").removeClass("present");
       $("#hour12").removeClass("future");
       $("#hour12").addClass("present");
+      $("#hour1").addClass("future");
+      $("#hour2").addClass("future");
+      $("#hour3").addClass("future");
+      $("#hour4").addClass("future");
+      $("#hour5").addClass("future");
       break;
     case 13:
       $("#hour12").removeClass("present");
       $("#hour1").removeClass("future");
       $("#hour1").addClass("present");
+      $("#hour2").addClass("future");
+      $("#hour3").addClass("future");
+      $("#hour4").addClass("future");
+      $("#hour5").addClass("future");
       break;
     case 14:
       $("#hour1").removeClass("present");
       $("#hour2").removeClass("future");
       $("#hour2").addClass("present");
+      $("#hour3").addClass("future");
+      $("#hour4").addClass("future");
+      $("#hour5").addClass("future");
       break;
     case 15:
       $("#hour2").removeClass("present");
       $("#hour3").removeClass("future");
       $("#hour3").addClass("present");
+      $("#hour4").addClass("future");
+      $("#hour5").addClass("future");
       break;
     case 16:
       $("#hour3").removeClass("present");
       $("#hour4").removeClass("future");
       $("#hour4").addClass("present");
+      $("#hour5").addClass("future");
       break;
     case 17:
       $("#hour4").removeClass("present");
@@ -75,99 +94,87 @@ function colorTime() {
 }
 colorTime();
 
-//TODO: load items fx
-// var loadItems = function () {
-//   tasks = JSON.parse(localStorage.getItem("tasks"));
-// };
+function loadItems() {
+  var getItemText = localStorage.getItem("9AM");
+  $("#hour9").val(getItemText);
 
-//TODO: save items fx
-var saveItems = function () {
-  console.log("this works");
-  var itemText = $(this).find("textarea").text().trim();
-  localStorage.setItem("itemText", JSON.stringify(itemText));
-};
-saveButton.on("click", saveItems);
+  var getItemText = localStorage.getItem("10AM");
+  $("#hour10").val(getItemText);
 
-//TODO: load items for the first time
-//loadItems();
+  var getItemText = localStorage.getItem("11AM");
+  $("#hour11").val(getItemText);
 
-// var showTime = function () {
+  var getItemText = localStorage.getItem("12PM");
+  $("#hour12").val(getItemText);
 
-//   var getTime = $("<p>").addClass("date").text(time);
-//   header.append(getTime);
-// };
-// setInterval(function () {
-//   header.remove(".date");
-//   showTime();
-// }, 60000);
-// showTime();
+  var getItemText = localStorage.getItem("1PM");
+  $("#hour1").val(getItemText);
 
-//TODO: audit to refresh page and check for time of day
-// var auditSchedule = function () {
-//   var date = today;
+  var getItemText = localStorage.getItem("2PM");
+  $("#hour2").val(getItemText);
 
-//   function hour9() {
-//     $("#hour9").removeClass("past");
-//     //TODO: present activities
-//     if (moment(date, "L").add(9, "hour")) {
-//       console.log("equal");
-//       $("#hour9").addClass("present");
-//     }
-//     //TODO: future activities
-//     if (moment(date, "L").add(10, "hour")) {
-//       console.log("before");
-//       $("hour9").addClass("future");
-//     }
-//     //TODO: past activities
-//     else {
-//       console.log("after");
-//       $("hour9").addClass("past");
-//     }
-//   }
-//   hour9();
+  var getItemText = localStorage.getItem("3PM");
+  $("#hour3").val(getItemText);
 
-//   function hour1() {
-//     $("#hour2").removeClass("past");
-//     //TODO: present activities
-//     if (moment(date, "L").add(14, "hour")) {
-//       console.log("equal");
-//       $("#hour2").addClass("present");
-//     }
-//     //TODO: future activities
-//     if (moment(date, "L").add(13, "hour")) {
-//       console.log("before");
-//       $("hour2").addClass("future");
-//     }
-//     //TODO: past activities
-//     else {
-//       console.log("after");
-//       $("hour2").addClass("past");
-//     }
-//   }
-//   hour1();
+  var getItemText = localStorage.getItem("4PM");
+  $("#hour4").val(getItemText);
 
-//   function hour2() {
-//     $("#hour3").removeClass("past");
-//     //TODO: present activities
-//     if (moment(date, "L").add(15, "hour")) {
-//       console.log("equal");
-//       $("#hour3").addClass("present");
-//     }
-//     //TODO: future activities
-//     else if (moment(date, "L").add(14, "hour")) {
-//       console.log("before");
-//       $("hour3").addClass("future");
-//     }
-//     //TODO: past activities
-//     else {
-//       console.log("after");
-//       $("hour3").addClass("past");
-//     }
-//   }
-//   hour2();
+  var getItemText = localStorage.getItem("5PM");
+  $("#hour5").val(getItemText);
+}
 
-//   setInterval(function () {
-//     auditSchedule();
-//   }, 1000 * 60 * 60);
-// };
-// auditSchedule();
+function saveItems9() {
+  var itemText = $("#hour9").val().trim();
+  localStorage.setItem("9AM", itemText);
+}
+$("#saveButton9").on("click", saveItems9);
+
+function saveItems10() {
+  var itemText = $("#hour10").val().trim();
+  localStorage.setItem("10AM", itemText);
+}
+$("#saveButton10").on("click", saveItems10);
+
+function saveItems11() {
+  var itemText = $("#hour11").val().trim();
+  localStorage.setItem("11AM", itemText);
+}
+$("#saveButton11").on("click", saveItems11);
+
+function saveItems12() {
+  var itemText = $("#hour12").val().trim();
+  localStorage.setItem("12PM", itemText);
+}
+$("#saveButton12").on("click", saveItems12);
+
+function saveItems1() {
+  var itemText = $("#hour1").val().trim();
+  localStorage.setItem("1PM", itemText);
+}
+$("#saveButton1").on("click", saveItems1);
+
+function saveItems2() {
+  var itemText = $("#hour2").val().trim();
+  localStorage.setItem("2PM", itemText);
+}
+$("#saveButton2").on("click", saveItems2);
+
+function saveItems3() {
+  var itemText = $("#hour3").val().trim();
+  localStorage.setItem("3PM", itemText);
+}
+$("#saveButton3").on("click", saveItems3);
+
+function saveItems4() {
+  var itemText = $("#hour4").val().trim();
+  localStorage.setItem("4PM", itemText);
+}
+$("#saveButton4").on("click", saveItems4);
+
+function saveItems5() {
+  var itemText = $("#hour5").val().trim();
+  localStorage.setItem("5PM", itemText);
+}
+$("#saveButton5").on("click", saveItems5);
+
+loadItems();
