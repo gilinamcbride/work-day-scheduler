@@ -26,4 +26,4 @@
 
 ![application screenshot](./assets/images/application_screenshot.png)
 
-[Link to deployed application](https://gilinamcbride.github.io/challenge5-work-day-scheduler/)
+[Link to deployed application](https://gilinamcbride.github.io/work-day-scheduler/)
