@@ -29,3 +29,7 @@ This is a simple calendar application that allows a user to save events for each
 ![application screenshot](./assets/images/application_screenshot.png)
 
 [Link to deployed application](https://gilinamcbride.github.io/work-day-scheduler/)
+
+## Questions?
+
+For any questions, please email gilinamcbride@gmail.com, or visit any other projects on [Github](github.com/gilinamcbride).
